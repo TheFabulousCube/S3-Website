@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/parallax.css" />
+    <link rel="stylesheet" href="/styles/accordion.css" />
+    <link rel="stylesheet" href="/styles/faq.css" />
+    <script src="/scripts/fader.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>The Fabulous Cube</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/">Home</a> <a href="/about">About Me</a> FAQ
+      <a href="/projects">Projects</a> <a href="/resume">Resume</a>
+      <a href="/contact">Contact me</a>
+    </div>
+    <svg id="fader"></svg>
+    <script>
+      fadeInPage();
+    </script>
+
+    <div class="faq">
+      <br />
+      <h1>Frequently asked questions</h1>
+      <hr />
+      <br />
+      <div class="accordion">
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="cube-story"
+          >
+            Why "Cube"? How did that come about?
+          </button>
+          <div class="accordion-content" id="cube-story" hidden>
+            <p>
+              With a name like "Marquardt" I picked up a nickname pretty quick.
+              Growing up it was usually just "Marq", but that's weird because it
+              has a "q" without being followed by a "u". "Mark" often worked,
+              but not once I stated college. All My colege friends decided I
+              needed a much more unusual nickname. Rubik's cube were popular at
+              the time and I always had one.
+            </p>
+            <p>
+              "Cube" became so standard, I've even had payroll checks made out
+              to "Cube". The teller at the bank knew me and cashed it, but told
+              me the people I worked for were idiots (they were). I had a
+              background check for a job and I wasn't sure if I needed to put it
+              down as an alias, so I did. It's a good thing, too! Because they
+              did ask me about at!
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="hobbies"
+          >
+            What are some of your hobbies?
+          </button>
+
+          <div class="accordion-content" id="hobbies" hidden>
+            <p>
+              I've done lots of things: raised lovebirds, stained glass,
+              woodworking, sensors, Home Assistant, 3D printing, vinyl cutting.
+              <br />
+              Most of my time is spent on home repair/improvement, or something
+              in the Makerspace/Right to Repair realm. I like 'tinkering' to see
+              what I can get to work. It may be software, hardware,
+              microcontrollers, electronics, or just "why does this stupid door
+              always stick?".
+            </p>
+
+          <!-- <div class="accordion"> -->
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="smart-home"
+              >
+                Pro tip: My favorite "Smart Home" automation
+              </button>
+
+              <div class="accordion-content" id="smart-home" hidden>
+                <p>
+                  Supplies: <br />
+                  - USB power bank/chargers<br />
+                  - USB powered "Fairy" lights (<strong>NOT</strong> the fancy
+                  ones with a remote)<br />
+                  <br />When you plug the fairy lights into the power bank, they
+                  should come on immediately (assuming you have
+                  <em>some</em> charge in them). <br />
+                  When you plug the power bank in the wall to charge it, the
+                  lights should go out. <br />
+                  If your electricty goes out, the lights should immediately
+                  come back on. <br />
+                  Most power banks have a 'pass through protection' to make this
+                  work. You can test it out with a power strip by turning on/off
+                  the power strip. <br />I've placed these in bathrooms, dark
+                  hallways, and interior rooms so if the power goes out, the
+                  lights come on and stay on as long as the power bank has
+                  power. I usually get about a day and a half with the ones I
+                  have.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="lovebirds"
+              >
+                Lovebirds? Really?
+              </button>
+
+              <div class="accordion-content" id="lovebirds" hidden>
+                <p>
+                  Oh yes. I was a Regional Director for the African Lovebird
+                  Society for a while and even won the Lovebird division at a
+                  couple of National Caged Bird Shows.
+                </p>
+
+                <div class="accordion-item">
+                  <button
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="nationals"
+                  >
+                    The National Caged Bird Show? Like the Westminster Kennel
+                    Club Dog Show, only for birds?
+                  </button>
+
+                  <div class="accordion-content" id="nationals" hidden>
+                    <p>
+                      Pretty much. It's a big deal in the bird world. People
+                      come from all over the world to compete.
+                    </p>
+                    <p>
+                      The closest thing to the agility training is the singing
+                      canaries, they compete in trios.
+                      <br />I never owned any, but one time I had driven to a
+                      show in Santa Clara, CA and someone I knew that had flown
+                      there bought some. I agreed to drive them back across the
+                      country and got to board them for a couple of weeks until
+                      we could meet up and return them.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="stained-glass"
+              >
+                Stained glass? Isn't that difficult?
+              </button>
+
+              <div class="accordion-content" id="stained-glass" hidden>
+                <p>
+                  Yes. Eventually, I got the hang of breaking the glass the way
+                  I wanted it to break. The soldering took a lot of practice.
+                  <br />Once my daughter was on the way, it didn't seem like a
+                  hobby with broken glass and lead was a good idea, so I
+                  stopped. I still have a lot of the materials and tools,
+                  though. Maybe I'll get back to it someday.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="music"
+          >
+            You've mentioned music a couple of times, what kind of music do you
+            like?
+          </button>
+
+          <div class="accordion-content" id="music" hidden>
+            <p>
+              Most anything 80's. I lean towards rock and hair metal, anything
+              with shred guitar. I think the whole grunge thing started the
+              downfal of pop/rock music, but it could have been the digitizing
+              of the media as a whole.
+              <br /><br />
+              But that's just my main preferrence, I like anything
+              "interesting". I know that's really vague, but I like a lot of
+              different kinds of music. Usually something instrumental when I'm
+              working, that could be electronica, classical, or trance. But I
+              find there's good music in every genre, if you give it a chance.
+              Good cover songs can be really interesting, too. The Jonny Cash
+              cover of Nine Inch Nails' "Hurt" brings a whole new insight to the
+              original song.
+              <br /><br />
+              The public library in Clarksville, TN had a great music section. I
+              used to go in and pick 6-7 random CDs with the rules:
+            </p>
+
+            <ul>
+              <li>1. No more than two CDs from the same genre.</li>
+              <li>2. No more than two CDs that I already knew.</li>
+              <li>3. I had to listen to the whole CD at least once.</li>
+            </ul>
+            <!-- </p> -->
+            <p>
+              I had to return them all two weeks later anyway. Except for the
+              White Stripes <em>White Blood Cells,</em> I considered it a public
+              service when I finally ripped a copy so I could return that one
+              for good. I discovered a lot of great music that way.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="sports"
+          >
+            What about sports? Do you play or follow any?
+          </button>
+
+          <div class="accordion-content" id="sports" hidden>
+            <p>
+              I've always been athletic enough to be decent at most sports, but
+              not skilled enough to be great at any. Except maybe tennis, I used
+              to be really good at tennis! I played football in high school, but
+              there were only about 100 students total in my high school, so
+              everyone played football or we didn't have a team.
+              <br /><br />
+              <strong>Football:</strong> We lived in Tennessee the year the
+              Titans went to the Super Bowl, so we were big fans at the time. We
+              even has PSL (Permanant Season Tickets) for a while. When we moved
+              to Florida, the Titans and Tampa Bay Buccaneers were in a heated
+              battle for 31st/32nd place (out of 32 teams). It just wasn't worth
+              the effort to follow them anymore. <br /><br />
+              <strong>Baseball:</strong> My Dad used to take my little brother
+              and I to Cincinatti Reds games when we were kids. When we moved to
+              Tenneessee, we went to a couple of Nashville Sounds games but it
+              wasn't the same anymore. I still root for the Reds, but I don't
+              really follow them anymore.<br /><br />
+              <strong>Basketball:</strong> I guess I've never lived anywhere
+              near a really good basketball team, so I never got into it. I do
+              like watching highlights! Especially Steph Curry, Lamelo Ball,
+              Luka Doncic, and the hot shot point guards. I guess I could start
+              watching the Grizzlies, they're a TN team and they've got Ja
+              Morant. It just seeems like there's always something else to do.
+              <br />One thing I never understood about basketball is how they
+              <em>ever</em> miss a free throw. It's the same distance every
+              time, from the same spot every time. You have as much time as you
+              need to line up your shot and you don't have to worry about anyone
+              trying to block it. And it's proven the "Granny Shot" is
+              significantly more accurate, but they don't use it because it's
+              not "cool" enough.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="work-experiences"
+          >
+            What about some of your work experiences? You've worked lots of
+            different things over many years, right?
+          </button>
+          <div class="accordion-content" id="work-experiences" hidden>
+            <p>
+              Yes, I've done lots of different things. I've worked in factories,
+              gas stations, pizza delivery, framing carpentry, I bartended for
+              over 10 years.
+            </p>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="bartending"
+              >
+                Bartending sounds interesting, tell me more.
+              </button>
+
+              <div class="accordion-content" id="bartending" hidden>
+                <p>
+                  I started out barbacking, which is basically just washing
+                  glasses, cleaning, and restocking the bar. I did that for a
+                  few months, then I got promoted to bartender. I worked at a
+                  couple of high-energy dance clubs, hotel bars, Ruby Tuesdays,
+                  even a biker bar for a while. I really enjoyed it.
+
+                  <br />
+                  I got to meet a lot of interesting people and I learned a lot
+                  about human nature.
+                  <br />
+                  My wife and I met bartending, too! So, huge plus there!
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="best-manager"
+              >
+                What's your best manager experience?
+              </button>
+
+              <div class="accordion-content" id="best-manager" hidden>
+                <p>
+                  I was a press operator at the tile factory, one morning the
+                  Press Manager came and explained we were going into layoffs,
+                  so he had me reassigned to the prill prep department. Sure
+                  enough, the next day They shut down the press shift I was
+                  working.
+                  <br />
+                  Fast forward a few months running the spray dryer, and the
+                  Press Manager came and told me to shut down all my equipment,
+                  close out my paperwork, and come find him. They were opening
+                  back up the press shift and wanted me to come back.
+                  <br />I was glad to be back on the press, but I was also
+                  really impressed that he had remembered me and thought of me
+                  when they needed to fill the position. It was a great
+                  experience and I really appreciated it.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="worst-manager"
+              >
+                So, what's your worst manager experience?
+              </button>
+
+              <div class="accordion-content" id="worst-manager" hidden>
+                <p>
+                  This has to be at Bosch. I was operating CNC lathes to mill
+                  brake rotors. One day when I came in, one of the lines had
+                  been down all 2nd shift because a datum ring was out of spec.
+                  The datum ring was a raised section of the top hat, and it's a
+                  compound cut, so there's no one adjustment that will always
+                  fix it. I started looking at it, but my manaager wanted to
+                  know why I thought I could fix it when no one all 2nd shift
+                  could fix it. I explained spatial relationships, and someone
+                  <em>named</em> "Cube", so she let me try it. I ran a first
+                  part to watch the tool path. I made an adjustment and the
+                  second run was in the right direction. I made another
+                  adjustment and my third run was almost there. I made a final
+                  adjustment, but with 3 scrap parts, she wouldn't let me run it
+                  again. We left the line down for another entire shift.
+                  <br />
+                  First shift came in and the first thing they did was run a
+                  part and gauge it. Then they asked why the line was down. I
+                  explained the whole fiasco, but the first part they ran was
+                  fine, so they started running the line like nothing had
+                  happened.
+                  <br />
+                  We lost an entire shift of production because of a manager
+                  that didn't have the confidence in her employees to let them
+                  try to fix a problem. It was really frustrating, but I guess
+                  we all got overtime working then next weekend.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="best-job"
+              >
+                What's the best job you've ever had?
+              </button>
+
+              <div class="accordion-content" id="best-job" hidden>
+                <p>
+                  I've done lots of things I enjoyed, and all of them have ups
+                  and downs. Probably one of the best jobs I had was working at
+                  a full service gas station. I got to know a lot of the regular
+                  customers and a lot of them were handicapped or had a baby in
+                  the car, so I got to help them out a lot.
+                  <br />
+                  You're outside 90% of the time, so when the weather's good, it
+                  was realy nice. It only took one person to run the station,
+                  and it's really pretty easy, so I got to listen to music,
+                  enjoy the weather, and chat with customers.
+                  <br />
+                  When it's raining, snowing, or cold, everyone would stop by to
+                  get like $2-3 in gas 'till they could get to a cheaper
+                  station, so it could be really miserable. But overall, I
+                  really enjoyed the freedom, the people, and the weather.
+                </p>
+                <br />
+                <p>
+                  Or maybe pizza delivery! Pizza delivery was a lot of fun. You
+                  basically get paid to drive around and listen to music. If
+                  you're doing your job right, you hardly spend any time in the
+                  actual store.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="worst-job"
+              >
+                What's the worst/hardest job you've ever had?
+              </button>
+
+              <div class="accordion-content" id="worst-job" hidden>
+                <p>
+                  That has to be cutting tobacco.
+                  <br />
+                  I was in Tenneessee in High School and summers I worked
+                  cutting tobacco. It was really hard work, it was dirty, and it
+                  was all manual labor. The tobacco sap gets all over your
+                  clothes, and all the dirt sticks to it. You finish up every
+                  day tired and dirty.
+                  <br />
+                  The bright side, of course, is that it paid really well, and
+                  you're in really good shape by the end of the summer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <hr />
+          <br />
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/accordion.js" defer></script>
+  </body>
+</html>

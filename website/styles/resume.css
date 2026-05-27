@@ -1,0 +1,15 @@
+.resume .accordion-trigger {
+  font-family: formal-question, Arial, Helvetica, sans-serif;
+  color: var(--yellow);
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+}
+
+.resume .accordion-trigger[aria-expanded="true"] {
+  color: var(--orange);
+}
+
+.resume .accordion-content {
+  font-family: formal-answer, Arial, Helvetica, sans-serif;
+  letter-spacing: 1.5px;
+  font-size: clamp(1.3rem, 3vw, 1.4rem);
+}

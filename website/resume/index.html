@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/parallax.css" />
+    <link rel="stylesheet" href="/styles/accordion.css" />
+    <link rel="stylesheet" href="/styles/resume.css" />
+    <script src="/scripts/fader.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>Resume - The Fabulous Cube</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/">Home</a> <a href="/about">About Me</a> <a href="/faq">FAQ</a>
+      <a href="/projects">Projects</a> Resume
+      <a href="/contact">Contact me</a>
+    </div>
+    <svg id="fader"></svg>
+    <script>
+      fadeInPage();
+    </script>
+
+    <div class="resume">
+      <br />
+      <h1>My Resume</h1>
+      <hr />
+      <br />
+      <div class="accordion">
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="summary"
+          >
+            Professional Summary
+          </button>
+          <div class="accordion-content" id="summary" hidden>
+            <p>
+              Software Engineer and Site Reliability Engineer with experience
+              building and supporting healthcare systems, mobile platforms, and
+              distributed services. I enjoy troubleshooting complex systems,
+              improving operational visibility, automating repetitive processes,
+              and helping teams work more effectively together. My background
+              spans software development, production support, industrial
+              operations, and hands-on problem solving, which heavily influences
+              how I approach reliability and systems design.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="education"
+          >
+            Education
+          </button>
+          <div class="accordion-content" id="education" hidden>
+            <p>
+              <u>Bachelor of Science in Computer Science</u><br />Austin Peay
+              State University (Let's go Peay!)<br />Clarksville, TN
+              <br />
+              I started Austin Peay in the early '80's. After taking BASIC,
+              FORTRAN, and Pascal, I left for no good reason at all, as young
+              men do.<br />
+              I'd see my advisor around town, and he'd suggest I return to
+              college, but he never really pushed it. <br />
+              Finally, 20-25+ years later when I did return, he was still my
+              advisor. I was very nervous and embarassed to face him, but he was
+              absolutely wonderful about it! He seemed happier than I was that I
+              was returning. All he said was something about "water under the
+              bridge", and "you're here now, let's get you registered". It was a
+              truely humbling experience and I hope I pass along some of the
+              same kindness.
+            </p>
+          </div>
+        </div>
+        <!-- work experience start-->
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="work-experience"
+          >
+            Work Experience (SWE/SRE)
+          </button>
+
+          <div class="accordion-content" id="work-experience" hidden>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="experience"
+              >
+                Greenway Health May 2017 - Present
+              </button>
+              <div class="accordion-content" id="experience" hidden>
+                <div class="accordion-item">
+                  <button
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="gpp-gpm"
+                  >
+                    Greenway Patient Portal / Patient Messaging
+                  </button>
+
+                  <div class="accordion-content" id="gpp-gpm" hidden>
+                    <p>
+                      I first started in Greenway's Patient Portal team. We did
+                      a lot of feature work, these were a couple that stand out.
+                    </p>
+                    <p>
+                      <u>Appointment Reminder Trace tool</u> <br />
+                      This was my first project as a new hire, and it was a
+                      'doozy'! When we send out appointment reminders, there are
+                      many reasons they may not actually reach the patient, we
+                      may not have an email/phone number or a service may have
+                      failed. This tool traced the path from where we get the
+                      event in GPM all the way to if the reminder was delivered
+                      or not. Not only did this tool discover issues, it aided
+                      in auditing in case of a disppute. I
+                      <strong>really</strong> got to know the GPM system well!
+                      <br />
+                      <u>GPP Direct Scheduling</u> <br />
+                      My favorite feature, and the one I'm most proud of was
+                      Direct Scheduling in GPP! This hooks directly into the EHR
+                      so patients can scheduled routine appointments on a
+                      self-serve basis through the portal. It required a lot of
+                      close collaboration with the EHR teams and I got to meet
+                      some really great people. The feature works great, but
+                      it's very difficult to set up, especially in our testing
+                      environments. A production EHR already has the rules for
+                      scheduling set up, so the EHR side is mostly done, but the
+                      Portal side setup can still be complicated. I was very
+                      excited when it went to EAP (Early Adopter Program), but
+                      very few of our early adopters actually tried it out.
+                      Still, up to that point, it was one of the coolest things
+                      I got to work on!
+                    </p>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="production-support"
+                  >
+                    GPP/GPM Production Support
+                  </button>
+
+                  <div class="accordion-content" id="production-support" hidden>
+                    <p>
+                      Moving to Production support really broadened my vision of
+                      how the system worked as a whole.
+                      <br />
+                      <u>Data Fixes and Runbooks</u> <br />
+                      We occasionaly had data fixes, or tools we often ran to
+                      check how the system was opearating, or why it wasn't. We
+                      started keeping a python run book so L3 could run those
+                      pre-approved tools without development support.
+                      <br />
+                      <u>Patch Weekend</u> <br />
+                      We were still on private cloud, so once a month, IT Ops
+                      would run some scripts to patch in all the security
+                      updates to our Windows servers. Sometimes this had
+                      surprising and unintended results, so once a month someone
+                      (me) would log into every system, in each environment and
+                      make sure nothing got broken during the patches. When I
+                      first took it over, it was about a two to three hour
+                      process starting at 5:00am on a Saturday. I started
+                      creating tools and scripts to automate as much of the
+                      process as possible. By the time I handed the process over
+                      to an off-shore team, it was closer to 30 minutes but you
+                      couldn't do real-time testing on Messaging sice we don't
+                      send out messages before 7:00am. Once we had enough
+                      confidence in the system, we tied it to someone's email so
+                      if something went wrong, they got a notification instead
+                      of sitting watching the scripts run.
+                      <br />
+                      <u
+                        >Reduced CI/CD from 3 1/2 weeks to fit our 2-week
+                        sprints</u
+                      >
+                      <br />
+                      As we went to 2-week sprints on the development side and
+                      added sevral off-shore teams, we started tripping over
+                      branching. Development would often get stuck waiting for a
+                      release so we free up the development branch for new work.
+                      This made the branching/release cycle a painful
+                      bottleneck. By adjusting the release calendar, setting
+                      hard code freeze dates, and automating the testing, I was
+                      able to get the process to fit reliably in our new 2-week
+                      schedule.
+                    </p>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="gca"
+                  >
+                    Greenway Clinical Assist
+                  </button>
+
+                  <div class="accordion-content" id="gca" hidden>
+                    <p>
+                      <u>GCA transcription POC</u> <br />
+                      We got to do a <strong>lot</strong> of prototyping before
+                      we started work on this project. Since the product is
+                      cross-platform we tried out several different frameworks.
+                      I got to make the final decision, but after talking to the
+                      team, the answer was obvious (and not the one I
+                      expected!).<br />
+                      It's no secret that we used a 3rd party for the
+                      transcriptions. We didn't want the front end doing all the
+                      work, so we set up a 2-hop design. The front end opens a
+                      web socket to the back end and starts streaming audio, the
+                      back end opens a web socket to the 3rd party and passes it
+                      along. The 3rd party returns the text, and it gets passed
+                      all the way back. The system I designed had 4 async tasks,
+                      all running concurrently, with buffers to provide
+                      decoupling, better testing, and easier trouble shooting.
+                      This was unfamiliar territory for me, so I created two
+                      stubs, one used Channels, the other one used Pipelines. I
+                      tested them for resilience, ease of coding, and used
+                      Benchmark Dot Net to gauge performance. This was one of
+                      the wildest things I think I've ever done.
+                      <br />
+                      <br />
+                      <u>Microservice templates</u> <br />
+                      The initial architecture for this project called for many
+                      small microservices. This not only decoupled the process
+                      flow, it decoupled a lot of the development. And we added
+                      a <strong>lot</strong> of teams very fast! I started
+                      mapping out what a standard microservice needed to have
+                      for both IaC and project structure, including tests. We
+                      tried the mapping on a couple of microservices and it took
+                      teams about a week to get a full repo set up. From there I
+                      built a template to follow, using the template, teams were
+                      able to spin up an empty service within hours.
+                    </p>
+                    <!-- nested questions go here -->
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button
+                    class="accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="sre"
+                  >
+                    Site Reliability Engineering
+                  </button>
+
+                  <div class="accordion-content" id="sre" hidden>
+                    <p>
+                      <u>Note Trace Tool</u> <br />
+                      Again, many things can go wrong sending the Clinical Notes
+                      to the EHR. This tool surfaced isses and traced to see
+                      what went wrong.
+                      <br />
+                      <u>New Relic agent for microservices</u> <br />
+                      The microservices ran a New Relic agent for
+                      instrumentation, and the instrumentation was included in
+                      an internal NuGet package. But it still required several
+                      pieces to work correctly. I inventoried the microservices,
+                      made some changes, and instructed the development teams on
+                      how to set this up corretly themselves.
+                      <br />
+                      <u>Open Telemetry for Descktop applications</u> <br />
+                      New Relic provides easy instrumentation for Mobile and
+                      microservices. But we needed observability into the
+                      Windows and MacOS desktop versions of our app.
+                      <br />
+                      <u>General and Special Purpose New Relic Dashboards</u>
+                      <br />
+                      I set up dashboards for the Desktop services and SRE
+                      Golden Metrics across all parts of the applicaion. I also
+                      had a couple of special purpose dashboards to surface
+                      specific issue we noticed.
+                    </p>
+                    <!-- nested questions go here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="grandpas"
+              >
+                Grandpa's Hardware (Ace Hardware Franchise)
+              </button>
+
+              <div class="accordion-content" id="grandpas" hidden>
+                <p>
+                  My college advisor set up the entire hardware store's computer
+                  system including point of sale, inventory management, and EPA
+                  reporting. It was all built for speed, so he used Clipper and
+                  compiled the code into 16-bit DOS executables. This was fine
+                  for Windows XP, but when Ace hardware updated their ordering
+                  system to use ActiveX/COM controls, we had to use Windows 7
+                  for ordering. The initial workaround was to add a virtual box
+                  on the office computers. They could run reports on Windows XP
+                  in Virtual Box, then do the ordering on the Ace Hardware
+                  website using Windows 7.
+                  <br />
+                  This was more of a support role than a development role, I got
+                  to do lots of things including:
+                </p>
+
+                - Rebuild a desktop environment after one of the PCs was hit
+                with a lightning strike<br />
+                - Set up and maintain printers and drivers compatible with the
+                systems<br />
+                - Recompile the Clipper code to 32-bit<br />
+                The side task I always had available was recompiling the Clipper
+                code to 32-bit. I picked Harbour since it was open source and
+                also capable of compiling into 64-bit. However, the
+                compatability was spotty at best. It was a lot of make a change,
+                compile, fix errors, test functionality. Over and over.
+                <br />
+                This was a great experience for learning how the system behaves
+                as a whole, wearing whatever hat was required that day, and
+                creating workarounds until you can fix something correctly.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- work experience end -->
+        <div class="accordion-item">
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="life-experience"
+          >
+            Life Experience
+          </button>
+          <div class="accordion-content" id="life-experience" hidden>
+            <p>
+              Other things, not SWE/SRE realted that helped build who I am today
+            </p>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="factory-work"
+              >
+                Factory Work
+              </button>
+
+              <div class="accordion-content" id="factory-work" hidden>
+                <p>
+                  <u>Zaniboni Lighting</u> <br />
+                  I took this as a temp job while looking for a software
+                  engineer job. I was hired as a welding assistant, but I also
+                  worked using my CNC knowledge and metalworking. Since it's in
+                  Clearwater, I had to learn Scientology Business practices, but
+                  I don't remember it being that different from everything else
+                  I've learned.
+                  <br />
+                  <u>Hemlock Semi-Conductor</u> <br />
+                  Based in Hemlock, MI, they were opening another plant in
+                  Clarksville, TN. We trained for 3-weeks in MI, then home for a
+                  week. I got to train for RCO, then certify for PCO (Process
+                  Control Operator). Unfortuanately, they closed the plant
+                  before we actually got to run anything. We got lots of safety
+                  training, and I also joined a Six-Sigma interest group that I
+                  found insightful and interesting. With a lay-off this size,
+                  they gave us all a chance to retrain for another job. I took
+                  that opportunity to go back to college and finish my BS in
+                  Computer Science.
+                  <br />
+                  <u>Bosch Braking Systems</u> <br />
+                  Learned to run (and enjoy!) running CNC machines and process
+                  controls. I learned a lot of Toyota Business Practice, Kaizen,
+                  and process/quality controls. This is probably the basis for
+                  most of my trouble shooting skills.
+                  <br />
+                  <u>Florim Tile Factory</u> <br />
+                  I worked as a press operator at Florim. I got to run the
+                  biggest press I've ever seen! It was night shift, 3 days one
+                  week, 4 days the next week. but my maintenance man worked a
+                  local Rodeo Show Fridays, so he took off every other Friday.
+                  They never bothered to replace him. "Ah, Mr. Cube. Your
+                  maintenance man, he no come in tonight. You good boy, you'll
+                  be fine." So, I really did get to figure out first-hand how to
+                  keep the press running!
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="f&b"
+              >
+                Bartending / Food and Beverage
+              </button>
+
+              <div class="accordion-content" id="f&b" hidden>
+                <p>
+                  <u>10 years of bartending</u> <br />
+                  I started in dance/nightclubs, but I've bartended at private
+                  partys, hotel lounges, Ruby Tuesday's, even a biker bar for a
+                  while! This is a great way to learn human nature and how
+                  people interact, if you're paying attention. And, yes, we did
+                  a lot of the <em>Cocktails</em> movie tricks. Another
+                  bartender and I had a juggling routine we did long before the
+                  movie came out. He and I used to throw stuff to each other all
+                  the time. (Yes, we sometimes broke stuff, too!)
+                  <br />
+                  <u>Pizza Hut</u> <br />
+                  I needed to make some extra cash and Pizza Delivery was great
+                  for this! You basically get paid to drive around and listen to
+                  the radio! If it's busy, you hardly spend any time in the
+                  store! It's a lot of freedom, planning, and time management.
+                </p>
+              </div>
+            </div>
+            <!-- <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="retail"
+              >
+                Retail
+              </button>
+
+              <div class="accordion-content" id="retail" hidden>
+                <p>
+                  <u>describe some experiences here</u>
+                  <br />
+                  Fast paced, lots of overtime, 3rd shift responsibilities,
+                  learned to use the camera for documentation
+                  <br />
+                </p>
+              </div>
+            </div> -->
+            <div class="accordion-item">
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="pips-playhouse"
+              >
+                Pip's Playhouse (self-employed)
+              </button>
+
+              <div class="accordion-content" id="pips-playhouse" hidden>
+                <p>
+                  My wife had birds when we met, we went to a Bird Fair (like a
+                  Flea Market for birds) in Nashville and I saw some Lovebirds I
+                  had to have. Once we had a lot of birds, it made more sense to
+                  buy things in bulk, and once we bought in bulk, it made sense
+                  to sell off some of the extra. Everything just sort of
+                  ballooned from there.
+                  <br />
+                  But this meant I had to schedule and book the fairs, set up a
+                  booth, and sell stuff. I handled the marketing and ordering.
+                  My Dad and Stepmother were both accountants, so I knew enough
+                  to be able to keep books and figure out profit margins, P/L
+                  statements, basic accounting, and taxes. Eventually, like all
+                  lucrative spaces, this market became oversaturated and very
+                  competitive. I was always able to drum up enough business to
+                  make the house payments and bills, but once my daughter was on
+                  the way, I traded the scramble and struggle, and the freedom,
+                  for the safety of a steady paycheck.
+                </p>
+                <!-- nested questions go here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/accordion.js" defer></script>
+  </body>
+</html>

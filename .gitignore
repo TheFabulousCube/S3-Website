@@ -1,0 +1,30 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and local output
+*.log
+sync-site.log
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Lambda/package artifacts
+lambda/**/dist/
+__pycache__/
+*.pyc
+*.zip
+
+# Generated static config
+website/config/contact.json

@@ -1,0 +1,15 @@
+.faq .accordion-trigger {
+  font-family: friendly-question, "Trebuchet MS", cursive;
+  color: var(--green);
+  font-size: clamp(1.3rem, 3vw, 1.4rem);
+}
+
+.faq .accordion-trigger[aria-expanded="true"] {
+  color: var(--blue);
+  text-shadow: 0 0 8px var(--blue-transparent);
+}
+
+.faq .accordion-content {
+  font-family: friendly-answer, "Comic Sans MS", cursive;
+  font-size: clamp(1.1rem, 2.6vw, 1.2rem);
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/parallax.css" />
+    <link rel="stylesheet" href="/styles/games.css" />
+    <link rel="stylesheet" href="/styles/flip-cards.css" />
+    <script src="/scripts/fader.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>The Fabulous Cube</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="/">Home</a> About Me <a href="/faq">FAQ</a>
+      <a href="/projects">Projects</a> <a href="/resume">Resume</a>
+      <a href="/contact">Contact me</a>
+    </div>
+    <svg id="fader"></svg>
+    <script>
+      fadeInPage();
+    </script>
+    <div class="about-container">
+      <div class="header">
+        <h1>About Me</h1>
+      </div>
+      <hr />
+      <br />
+
+      <main id="about-content">
+        <div class="pill-menu">
+          <!-- Two Truths & a Lie -->
+          <div class="pill" data-target="truths">Two Truths & a Lie</div>
+          <div class="game-section hidden" id="game-truths">
+            <div id="truths-container" class="card-grid"></div>
+            <button id="next-truths" class="next-btn">Next Round</button>
+          </div>
+
+          <!-- Overrated / Underrated -->
+          <div class="pill" data-target="overrated">
+            Overrated / Underrated
+          </div>
+          <div class="game-section hidden" id="game-overrated">
+            <div id="ou-container" class="card-grid"></div>
+            <button id="next-ou" class="next-btn">Next Topic</button>
+          </div>
+
+          <!-- Would I Say That? -->
+          <div class="pill" data-target="wouldisay">
+            Would I Say That?
+          </div>
+          <div class="game-section hidden" id="game-wouldisay">
+            <div id="wouldisay-container" class="card-grid"></div>
+            <button id="next-wis" class="next-btn">Next Saying</button>
+          </div>
+
+          <!-- Would You Rather -->
+          <div class="pill" data-target="wouldyou">
+            Would You Rather
+          </div>
+          <div class="game-section hidden" id="game-wouldyou">
+            <div id="wouldyou-container" class="card-grid"></div>
+            <button id="next-wyr" class="next-btn">Next Round</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/scripts/games/index.js"></script>
+  </body>
+</html>

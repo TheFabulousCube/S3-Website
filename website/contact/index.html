@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/contact.css" />
+    <link rel="stylesheet" href="/styles/parallax.css" />
+    <script src="/scripts/fader.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>The Fabulous Cube</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="/">Home</a> <a href="/about">About Me</a> <a href="/faq">FAQ</a>
+      <a href="/projects">Projects</a> <a href="/resume">Resume</a> Contact me
+    </div>
+    <svg id="fader"></svg>
+    <script>
+      fadeInPage();
+    </script>
+    <div class="contact">
+      <h2>Let's Get In Touch!</h2>
+      <hr />
+      <br />
+      <p>
+        I'd love to hear from you!<br />
+        I enjoy talking about software engineering, reliability, automation,
+        sharing 'war' stories, trading tips on microcontrollers or Smart Home
+        applications. Or 'Dad' jokes, or music.
+      </p>
+      <p>
+        Whether you have a question about my work, want to discuss a potential
+        project, or just want to say hi, feel free to reach out through any of
+        the methods below:
+      </p>
+      <br />
+      <div>
+        <strong>Social Media:</strong> You can find me on
+        <ul>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/the-fabulous-cube/"
+              target="_blank"
+            >
+              <i class="fab fa-linkedin"></i> LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/TheFabulousCube" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/cube_fabulous" target="_blank">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            if you really must. I don't check it often.
+          </li>
+        </ul>
+        <br />
+      </div>
+      <div>
+        Or, just send me a note & I'll get back to you as soon as I can:<br />
+        <form id="contact-form">
+          <!-- Name field -->
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your name"
+            />
+          </div>
+
+          <!-- Email field -->
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <!-- Message field -->
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              placeholder="What would you like to say?"
+            ></textarea>
+          </div>
+
+          <!-- Don't use hidden fields here, it feels 'smarmy' -->
+          <div class="small-note">("Hidden" fields)</div>
+          <div class="form-group">
+            <label for="screen_resolution">Screen Resolution</label>
+            <input
+              type="text"
+              id="screen_resolution"
+              name="screen_resolution"
+              readonly
+              placeholder="Will auto-populate"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="device_type">Device Type</label>
+            <input
+              type="text"
+              id="device_type"
+              name="device_type"
+              readonly
+              placeholder="Will auto-populate"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="timezone">Timezone</label>
+            <input
+              type="text"
+              id="timezone"
+              name="timezone"
+              readonly
+              placeholder="Will auto-populate"
+            />
+          </div>
+          <div
+            id="responseMessage"
+            class="response-message"
+            style="display: none"
+          ></div>
+          <!-- Submit button -->
+          <input type="submit" id="submitBtn" class="submit-btn" value="Send" />
+        </form>
+      </div>
+    </div>
+    <script src="/scripts/contact.js"></script>
+  </body>
+</html>

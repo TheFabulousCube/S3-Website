@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "fabfont";
+  src: url(../fonts/grantmouth-grantmouth-400.otf);
+}
+@font-face {
+  font-family: "fabscript";
+  src: url(../fonts/grantmouth-grantmouth-script-400.otf);
+}
+@font-face {
+  font-family: "fabgrad";
+  src: url(../fonts/grantmouth-grantmouth-gradient-400.otf);
+}
+@font-face {
+  font-family: "friendly-bold";
+  src: url(../fonts/KingthingsHand.ttf);
+}
+@font-face {
+  font-family: "friendly-plain";
+  src: url(../fonts/KingthingsHandLight.ttf);
+}
+@font-face {
+  font-family: "friendly-question";
+  src: url(../fonts/VanillaExtractRegular.ttf);
+}
+@font-face {
+  font-family: "friendly-answer";
+  src: url(../fonts/VanillaExtractRegular.ttf);
+}
+@font-face {
+  font-family: "formal-question";
+  src: url(../fonts/Lato-Bold.ttf);
+}
+@font-face {
+  font-family: "formal-answer";
+  src: url(../fonts/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: "stately-hook";
+  src: url(../fonts/SpaceGrotesk-Regular.ttf);
+}
+@font-face {
+  font-family: "stately-story";
+  src: url(../fonts/Merriweather_24pt-Regular.ttf);
+}
+:root {
+  --red: #c00; /* rgb(204, 0, 0) */
+  --red-transparent: #c007;
+
+  --blue: #06f; /* #0066ff */
+  --blue-transparent: #06f7;
+
+  --yellow: #fc0; /* rgb(255, 204, 0) */
+  --yellow-transparent: #fc07;
+
+  --green: #00b050;
+  --green-transparent: #00b05077;
+
+  --orange: #f60; /* rgb(255, 102, 0) */
+  --orange-transparent: #f607;
+
+  --whiteText: #f5f5f5; /* rgb(245, 245, 245) */
+  --black: #0a0a0a; /* rgb(10, 10, 10) */
+}
+
+* {
+  margin: 0;
+  color: var(--whiteText);
+}
+
+.header {
+  border-width: 10px;
+  position: relative;
+  font-size: 200%;
+  text-align: left;
+}
+
+.header a {
+  color: var(--blue);
+}
+
+.header a:visited {
+  color: var(--red);
+}
+
+body {
+  font-family: fabfont;
+  background-color: var(--black);
+  color: var(--whiteText);
+  line-height: 1.5;
+  padding: 0 10px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/parallax.css" />
+    <script src="scripts/parallax.js"></script>
+    <script src="scripts/dragdrop.js"></script>
+    <script src="scripts/fader.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>The Fabulous Cube</title>
+  </head>
+  <body>
+    <div class="header">
+      Home <a href="about">About Me</a> <a href="faq">FAQ</a>
+      <a href="projects">Projects</a> <a href="/resume">Resume</a>
+      <a href="contact">Contact me</a>
+    </div>
+    <svg id="fader"></svg>
+    <script>
+      fadeInPage();
+    </script>
+    <div
+      class="mouse_move"
+      id="div1"
+      ondrop="drop(event)"
+      ondragover="allowDrop(event)"
+    >
+      <img
+        id="img1"
+        src="images/pngegg.png"
+        class="mouse"
+        value="7"
+        draggable="true"
+        ondragstart="drag(event)"
+      />
+      <h2 class="fade">The Fabulous Cube</h2>
+      <img
+        id="img2"
+        src="images/pngegg.png"
+        class="mouse"
+        value="-7"
+        draggable="true"
+        ondragstart="drag(event)"
+      />
+    </div>
+  </body>
+</html>

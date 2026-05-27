@@ -1,0 +1,52 @@
+/* Pill menu animations */
+:root {
+  /* Tunable timing variables (adjust these to change open/close speed) */
+  --pill-opacity-duration: 5s;
+  --pill-maxheight-duration: 5s;
+  --pill-easing: ease-in-out;
+}
+
+.game-section {
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition:
+    opacity var(--pill-opacity-duration) var(--pill-easing),
+    max-height var(--pill-maxheight-duration) var(--pill-easing);
+  pointer-events: none;
+
+  --height: 0px;
+}
+
+.game-section.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.game-section.fade-in {
+  opacity: 1;
+  max-height: 2000px;
+  pointer-events: all;
+}
+
+/* While the page is loading and before JS has initialized the pill menu,
+   use display:none to avoid layout flashes. After JS runs we add
+   `.pill-menu.initialized` which switches hidden sections to be collapsible
+   (so transitions work on first open). */
+.pill-menu .game-section[hidden] {
+  /* Allow authors to keep the `hidden` attribute in HTML for semantics,
+     but override its default display:none so we can animate the collapse.
+     The element will appear collapsed (height:0) until JS opens it. */
+  display: block; /* override user-agent hidden */
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Hidden state via class (compatible with earlier code) */
+.game-section.hidden {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}

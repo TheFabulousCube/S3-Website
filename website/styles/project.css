@@ -1,0 +1,208 @@
+.project {
+  /* remove outer fixed border so card controls its own border */
+  border: none;
+  border-radius: 5%;
+  /* keep other styles if needed */
+
+  /* responsive flex sizing */
+  box-sizing: border-box;
+  flex: 1 1 100%;
+  max-width: 100%;
+  margin: 0; /* spacing handled by container gap */
+}
+
+/* container that holds project items (from projects.php .-division) */
+.-division {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start; /* lets image border follow image height */
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+/* sensible column counts at breakpoints */
+@media (min-width: 50rem) {
+  .project.-thin2,
+  .project.-thin3,
+  .project.-thin4 {
+    flex: 0 1 calc(50% - 20px); /* two columns */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (min-width: 75rem) {
+  .project.-thin3 {
+    flex: 0 1 calc(33.333% - 20px); /* three columns */
+    max-width: calc(33.333% - 20px);
+  }
+  .project.-thin4 {
+    flex: 0 1 calc(25% - 20px); /* four columns on wide screens */
+    max-width: calc(25% - 20px);
+  }
+}
+
+/* keep very small screens single column */
+@media (max-width: 40rem) {
+  .project {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* flip card layout */
+.flip-card {
+  perspective: 1000px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  outline: none;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  transition: transform 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:focus .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* front and back faces */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+}
+
+/* front shows image and title; border follows content height */
+.flip-card-front {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  border: 0.25rem solid var(--yellow);
+  justify-content: center; /* Center vertically */
+  gap: 1rem; /* Consistent spacing between image and title */
+  padding: 1.5rem; /* More breathing room */
+  font-family: stately-hook, sans-serif;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.flip-card-front:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px 4px var(--yellow);
+}
+
+/* Image sizing — border follows image height because image height determines front content */
+.flip-card-front img {
+  width: 100%;
+  max-width: 12rem; /* ~192px but scales with font size */
+  height: auto;
+  display: block;
+  border-radius: 0.25rem;
+  border: 0.125rem solid #ddd;
+  padding: 0.25rem;
+  box-sizing: border-box;
+}
+
+/* Title style */
+.project-title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem; /* 24px at default font size */
+  line-height: 1.2;
+  color: var(--whiteText);
+  max-width: 90%; /* Prevent long titles from overflowing */
+}
+
+/* Responsive title sizing */
+@media (max-width: 40rem) {
+  .project-title {
+    font-size: 1.3125rem; /* ~21px but will scale */
+  }
+}
+
+@media (min-width: 75rem) {
+  .project-title {
+    font-size: 1.75rem; /* Larger on big screens */
+  }
+}
+
+/* back face */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: var(--black);
+  color: var(--whiteText);
+  justify-content: flex-start;
+  gap: 8px;
+  align-items: flex-start;
+  font-family: stately-story, serif;
+}
+
+/* summary and links */
+.project-summary {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.project-links {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-links a {
+  background: var(--blue);
+  color: var(--black);
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.project-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255, 255, 0, 0.25);
+}
+
+/* responsive adjustments */
+@media (min-width: 50rem) {
+  .flip-card-inner {
+    min-height: 260px;
+  }
+  .flip-card-front img {
+    max-width: 150px;
+  }
+}
+
+.flip-card-front,
+.flip-card-front * {
+  font-family: stately-hook, sans-serif !important;
+}
+
+.flip-card-back,
+.flip-card-back * {
+  font-family: stately-story, serif !important;
+}

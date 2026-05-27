@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>404 — Not Found · The Fabulous Cube</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <style>
+      /* page-specific overrides to match site theme */
+      body {
+        background-color: var(--black);
+        color: var(--whiteText);
+      }
+      .error-wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        flex-direction: column;
+        gap: 1.25rem;
+        font-family: friendly-plain, fabfont, sans-serif;
+      }
+      .error-box {
+        max-width: 880px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+      h1 {
+        font-family: friendly-bold, fabfont, sans-serif;
+        font-size: 3.2rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: 3px;
+      }
+      p.lead {
+        color: var(--yellow);
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+      }
+      .actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+      .btn {
+        background: var(--blue);
+        color: white;
+        border: none;
+        padding: 0.65rem 1.1rem;
+        border-radius: 6px;
+        font: inherit;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--whiteText);
+      }
+
+      /* animated minimalist Rubik cube (SVG scales well) */
+      .cube {
+        width: 60rch;
+        height: 60rch;
+        margin: 0 auto 0.75rem auto;
+        display: block;
+      }
+      .cube img,
+      .cube-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 6px; /* optional */
+        object-fit: contain;
+      }
+      /* subtle float + rotate */
+      @keyframes float-rotate {
+        0% {
+          transform: translateY(0) rotateX(8deg) rotateY(0deg);
+        }
+        50% {
+          transform: translateY(-6px) rotateX(8deg) rotateY(12deg);
+        }
+        100% {
+          transform: translateY(0) rotateX(8deg) rotateY(0deg);
+        }
+      }
+      .cube {
+        animation: float-rotate 4s ease-in-out infinite;
+      }
+
+      /* small info area for debug details (hidden by default) */
+      .debug {
+        margin-top: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+        display: none;
+        word-break: break-word;
+      }
+
+      .ai-disclaimer {
+        margin-top: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+
+      /* fade-in used by local fader too; keep simple fallback */
+      .fade-in {
+        animation: fadeIn 600ms ease both;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-wrap">
+      <div class="error-box fade-in">
+        <div class="cube" aria-hidden="true">
+          <img
+            src="/images/broken_cube.png"
+            alt="A broken Rubik's Cube"
+            class="cube-img"
+            loading="lazy"
+            width="200"
+            height="200"
+          />
+        </div>
+        <h1>404 — Page Not Found</h1>
+        <p class="lead">
+          Looks like that move didn't land. The page you requested is missing.
+        </p>
+
+        <p>
+          Try returning home, or send a note if something's broken — I'll take a
+          look.
+        </p>
+
+        <div class="actions">
+          <a class="btn" href="/">Home</a>
+          <a class="btn secondary" href="/contact">Contact</a>
+          <button id="tryAgain" class="btn secondary" title="Retry">
+            Try Again
+          </button>
+        </div>
+
+        <div id="debug" class="debug" aria-hidden="true"></div>
+        <p class="ai-disclaimer" aria-hidden="false">
+          This page (content and layout) was generated with assistance from an
+          AI tool.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // fade in consistent with site; keep short and client-side only
+      (function () {
+        // Try Again button: attempt to fetch current path (useful when origin had a transient issue)
+        const tryBtn = document.getElementById("tryAgain");
+        const debug = document.getElementById("debug");
+        tryBtn.addEventListener("click", async function () {
+          tryBtn.disabled = true;
+          tryBtn.textContent = "Checking…";
+          const url = window.location.href;
+          try {
+            const res = await fetch(url, { method: "GET", cache: "no-store" });
+            // If the resource resolves (200) redirect to itself; otherwise show hint
+            if (res.ok) {
+              window.location.reload();
+            } else {
+              debug.style.display = "block";
+              debug.textContent = `Server returned ${res.status} ${res.statusText} — showing error page.`;
+            }
+          } catch (err) {
+            debug.style.display = "block";
+            debug.textContent = "Network error — unable to reach origin.";
+          } finally {
+            tryBtn.disabled = false;
+            tryBtn.textContent = "Try Again";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
