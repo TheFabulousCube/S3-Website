@@ -1,0 +1,64 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+
+jobs:
+  deploy:
+    name: Terraform Apply And Site Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.8.5"
+          terraform_wrapper: false
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Terraform apply
+        working-directory: infra/site
+        run: |
+          terraform init \
+            -backend-config="bucket=${{ vars.TF_STATE_BUCKET }}" \
+            -backend-config="key=site/terraform.tfstate" \
+            -backend-config="region=${{ env.AWS_REGION }}" \
+            -backend-config="dynamodb_table=${{ vars.TF_LOCK_TABLE }}"
+
+          terraform apply -auto-approve \
+            -var="contact_to_email=${{ secrets.CONTACT_TO_EMAIL }}" \
+            -var="contact_from_email=${{ secrets.CONTACT_FROM_EMAIL }}"
+
+      - name: Generate contact config
+        run: |
+          CONTACT_API_ENDPOINT="$(terraform -chdir=infra/site output -raw contact_api_endpoint)"
+          CONTACT_API_KEY="$(terraform -chdir=infra/site output -raw contact_api_key_value || true)"
+          CONTACT_API_ENDPOINT="$CONTACT_API_ENDPOINT" CONTACT_API_KEY="$CONTACT_API_KEY" \
+            node scripts/generate-contact-config.mjs website/config/contact.json
+
+      - name: Upload website and invalidate CloudFront
+        run: |
+          SITE_BUCKET="$(terraform -chdir=infra/site output -raw site_bucket_name)"
+          DISTRIBUTION_ID="$(terraform -chdir=infra/site output -raw cloudfront_distribution_id)"
+          bash scripts/deploy-site.sh \
+            --bucket "$SITE_BUCKET" \
+            --distribution-id "$DISTRIBUTION_ID"
