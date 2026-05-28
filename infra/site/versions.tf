@@ -18,9 +18,27 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+
+  default_tags {
+    tags = {
+      Project     = "S3-Website"
+      ManagedBy   = "Terraform"
+      Repository  = "TheFabulousCube/S3-Website"
+      Environment = "prod"
+    }
+  }
 }
 
 provider "aws" {
   alias  = "us_east_1"
   region = "us-east-1"
+
+  default_tags {
+    tags = {
+      Project     = "S3-Website"
+      ManagedBy   = "Terraform"
+      Repository  = "TheFabulousCube/S3-Website"
+      Environment = "prod"
+    }
+  }
 }

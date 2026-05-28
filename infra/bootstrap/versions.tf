@@ -11,4 +11,13 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+
+  default_tags {
+    tags = {
+      Project     = "S3-Website"
+      ManagedBy   = "Terraform"
+      Repository  = "TheFabulousCube/S3-Website"
+      Environment = "prod"
+    }
+  }
 }

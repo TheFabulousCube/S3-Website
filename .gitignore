@@ -10,6 +10,8 @@ sync-site.log
 
 # Terraform
 **/.terraform/
+*.tfvars
+!*.tfvars.example
 *.tfstate
 *.tfstate.*
 *.tfplan
