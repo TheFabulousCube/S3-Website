@@ -69,7 +69,7 @@ resource "aws_api_gateway_integration_response" "contact_options" {
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Api-Key'"
     "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'"
-    "method.response.header.Access-Control-Allow-Origin"  = "'https://${var.site_domain}'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
 }
 

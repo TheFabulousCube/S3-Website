@@ -32,7 +32,7 @@ resource "aws_cloudfront_distribution" "site" {
   is_ipv6_enabled     = true
   comment             = var.site_domain
   default_root_object = "index.html"
-  aliases             = [var.site_domain]
+  aliases             = var.acm_certificate_arn == "" ? [] : local.site_aliases
 
   origin {
     origin_id                = "s3-site"
@@ -80,8 +80,9 @@ resource "aws_cloudfront_distribution" "site" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate_validation.site.certificate_arn
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2021"
+    acm_certificate_arn            = var.acm_certificate_arn == "" ? null : var.acm_certificate_arn
+    cloudfront_default_certificate = var.acm_certificate_arn == "" ? true : null
+    ssl_support_method             = var.acm_certificate_arn == "" ? null : "sni-only"
+    minimum_protocol_version       = "TLSv1.2_2021"
   }
 }

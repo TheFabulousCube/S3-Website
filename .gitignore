@@ -8,6 +8,9 @@ Thumbs.db
 *.log
 sync-site.log
 
+# Private operational notes
+docs/private/
+
 # Terraform
 **/.terraform/
 *.tfvars

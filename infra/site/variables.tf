@@ -17,15 +17,27 @@ variable "site_bucket_name" {
 }
 
 variable "root_domain" {
-  description = "Route53 hosted zone domain."
+  description = "Legacy domain value retained for existing tfvars. DNS is managed outside Terraform."
   type        = string
   default     = "thefabulouscube.com"
 }
 
 variable "site_domain" {
-  description = "Public CloudFront alias for the site."
+  description = "Primary public CloudFront alias for the site."
   type        = string
   default     = "s3-hosted.thefabulouscube.com"
+}
+
+variable "site_aliases" {
+  description = "Additional CloudFront aliases. DNS records for these names are managed outside Terraform."
+  type        = list(string)
+  default     = []
+}
+
+variable "acm_certificate_arn" {
+  description = "Existing us-east-1 ACM certificate ARN used by CloudFront. DNS validation is managed outside Terraform."
+  type        = string
+  default     = ""
 }
 
 variable "contact_to_email" {
