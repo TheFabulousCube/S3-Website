@@ -63,3 +63,15 @@
   margin-left: 1rem;
   gap: 0.5rem;
 }
+
+.accordion-details {
+  font-size: 0.75em; /* This will now visually look smaller than the trigger */
+  width: 95%; /* Makes the width smaller/responsive */
+  display: inline-block;
+}
+
+.accordion-content .accordion {
+  margin-top: 0.75rem;
+  margin-left: 1rem;
+  gap: 0.5rem;
+}

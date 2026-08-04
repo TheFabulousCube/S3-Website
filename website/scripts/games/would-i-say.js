@@ -10,7 +10,8 @@ export function initializeWouldISay() {
   if (!container || !nextButton) return;
 
   function renderSaying() {
-    const saying = wouldISayData[Math.floor(Math.random() * wouldISayData.length)];
+    const saying =
+      wouldISayData[Math.floor(Math.random() * wouldISayData.length)];
     let answered = false;
 
     const card = document.createElement("div");
@@ -30,7 +31,10 @@ export function initializeWouldISay() {
 
     VERDICTS.forEach((verdict, index) => {
       const button = document.createElement("button");
-      button.classList.add("guess-btn", index === 0 ? "guess-over" : "guess-under");
+      button.classList.add(
+        "guess-btn",
+        index === 0 ? "guess-over" : "guess-under",
+      );
       button.type = "button";
       button.textContent = verdict;
       button.addEventListener("click", (event) => {

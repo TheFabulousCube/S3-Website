@@ -26,6 +26,10 @@
   margin-bottom: 0.75rem;
 }
 
+.form-routing {
+  display: none;
+}
+
 .form-group label {
   margin: 0;
   min-width: 0;

@@ -1,9 +1,12 @@
 // Contact form submission handler
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contact-form");
   const responseMessage = document.getElementById("responseMessage");
   const submitBtn = document.getElementById("submitBtn");
-  const contactConfig = await loadContactConfig();
+
+  const API_ENDPOINT =
+    "https://r4pgr1w0j0.execute-api.us-east-1.amazonaws.com/prod/contact";
+  const API_KEY = "XNQdPROKzb7tWEMb6aKTz2SqQIB5IfxJ4lY2FTyH";
 
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -18,28 +21,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     ? "mobile"
     : "desktop";
 
-  if (!contactConfig.endpoint) {
-    submitBtn.disabled = true;
-    responseMessage.className = "response-message error";
-    responseMessage.innerHTML = `
-      <p><strong>Contact form unavailable</strong></p>
-      <p>The contact service configuration has not been published yet.</p>
-    `;
-    responseMessage.style.display = "block";
-    return;
-  }
-
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Prevent default form submission
 
     const formData = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
+	  subject: document.getElementById("subject").value,
       message: document.getElementById("message").value,
       screenResolution: window.screen.width + "x" + window.screen.height,
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       device: isMobile ? "mobile" : "desktop",
-      environment: "s3 hosted",
     };
 
     submitBtn.disabled = true;
@@ -47,17 +39,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     responseMessage.style.display = "none";
 
     try {
-      const headers = {
-        "Content-Type": "application/json",
-      };
-
-      if (contactConfig.apiKey) {
-        headers["X-Api-Key"] = contactConfig.apiKey;
-      }
-
-      const response = await fetch(contactConfig.endpoint, {
+      const response = await fetch(API_ENDPOINT, {
         method: "POST",
-        headers,
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Key": API_KEY,
+        },
         body: JSON.stringify(formData),
       });
 
@@ -104,20 +91,3 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 });
-
-async function loadContactConfig() {
-  try {
-    const response = await fetch("/config/contact.json", {
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      throw new Error(`Config request failed: ${response.status}`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Contact config load error:", error);
-    return {};
-  }
-}

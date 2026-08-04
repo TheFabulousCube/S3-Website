@@ -11,28 +11,27 @@
     <title>The Fabulous Cube</title>
   </head>
   <body>
-    <div class="header">
-      Home <a href="about">About Me</a> <a href="faq">FAQ</a>
-      <a href="projects">Projects</a> <a href="/resume">Resume</a>
-      <a href="contact">Contact me</a>
-    </div>
-    <svg id="fader"></svg>
+    <header class="header">
+      <nav>      
+        <div class="home-link">Home</div>
+        <a href="about">About Me</a>
+        <a href="faq">FAQ</a>
+        <a href="projects">Projects</a>
+        <a href="/resume">Resume</a>
+        <a href="contact">Contact me</a>
+      </nav>
+    </header>
+    <svg id="fader"></svg>    
     <script>
       fadeInPage();
     </script>
-    <div
-      class="mouse_move"
-      id="div1"
-      ondrop="drop(event)"
-      ondragover="allowDrop(event)"
-    >
+    <div class="mouse_move" id="div1">
       <img
         id="img1"
         src="images/pngegg.png"
         class="mouse"
         value="7"
         draggable="true"
-        ondragstart="drag(event)"
       />
       <h2 class="fade">The Fabulous Cube</h2>
       <img
@@ -41,7 +40,6 @@
         class="mouse"
         value="-7"
         draggable="true"
-        ondragstart="drag(event)"
       />
     </div>
   </body>

@@ -60,10 +60,8 @@ export function initializePillMenu() {
   });
 
   function openSection(section) {
-    cancelCollapse(section);
     section.hidden = false;
     section.classList.remove("hidden");
-    section.dataset.pillState = "opening";
 
     const extra = extraSpaceFor(section);
     requestAnimationFrame(() => {
@@ -73,32 +71,20 @@ export function initializePillMenu() {
       );
       section.classList.add("open");
       section.style.opacity = "1";
-      section.dataset.pillState = "open";
     });
   }
 
   function collapseSection(section) {
-    cancelCollapse(section);
-    section.dataset.pillState = "closing";
     section.style.setProperty("--height", "0px");
     section.classList.remove("open");
 
     const onEnd = (e) => {
       if (e.propertyName !== "max-height") return;
-      cancelCollapse(section);
-      if (section.classList.contains("open")) return;
+      section.removeEventListener("transitionend", onEnd);
       section.classList.add("hidden");
       section.hidden = true;
-      section.dataset.pillState = "closed";
     };
 
-    section._collapseEndHandler = onEnd;
     section.addEventListener("transitionend", onEnd);
-  }
-
-  function cancelCollapse(section) {
-    if (!section._collapseEndHandler) return;
-    section.removeEventListener("transitionend", section._collapseEndHandler);
-    section._collapseEndHandler = null;
   }
 }
