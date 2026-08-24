@@ -3,20 +3,36 @@ import boto3
 import os
 from datetime import datetime
 
-ses_client = boto3.client('ses', region_name='us-east-1')  
-RECEIVER_EMAIL = os.environ.get('RECEIVER_EMAIL', 'your-email@example.com')  
+ses_client = boto3.client('ses', region_name='us-east-1')
 
-def lambda_handler(event, context):
 
-    allowed_origins = [
+def get_allowed_origins():
+    raw = os.environ.get('ALLOWED_ORIGINS', '')
+    if raw:
+        return [origin.strip() for origin in raw.split(',') if origin.strip()]
+
+    return [
         'https://thefabulouscube.com',
+        'https://www.thefabulouscube.com',
         'https://s3-hosted.thefabulouscube.com',
+        'https://www.s3-hosted.thefabulouscube.com',
     ]
 
-    request_origin = event.get('headers', {}).get('origin', '')
+
+def get_verified_email_values():
+    sender = os.environ.get('CONTACT_FROM_EMAIL') or os.environ.get('CONTACT_TO_EMAIL') or 'software@thefabulouscube.com'
+    recipient = os.environ.get('CONTACT_TO_EMAIL') or sender
+    return sender, recipient
 
 
-    print (f'Request Origin: {request_origin}')
+def lambda_handler(event, context):
+    allowed_origins = get_allowed_origins()
+    sender_email, recipient_email = get_verified_email_values()
+
+    headers = event.get('headers') or {}
+    request_origin = headers.get('origin', '')
+    print(f'Request Origin: {request_origin}')
+
     if request_origin not in allowed_origins:
         return {
             'statusCode': 403,
@@ -31,13 +47,14 @@ def lambda_handler(event, context):
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': request_origin,
         'Access-Control-Allow-Headers': 'Content-Type,X-Api-Key',
-    }        
-    
-    if event.get("httpMethod") == "OPTIONS":
+        'Access-Control-Allow-Methods': 'POST,OPTIONS',
+    }
+
+    if event.get('httpMethod') == 'OPTIONS':
         return {
-            'statusCode': 204,
+            'statusCode': 200,
             'headers': cors_headers,
-            'body': ""
+            'body': '',
         }
 
     try:
@@ -52,7 +69,19 @@ def lambda_handler(event, context):
 
         name = body.get('name', '').strip()
         email = body.get('email', '').strip()
+        subject = body.get('subject', '').strip()
         message = body.get('message', '').strip()
+
+        if subject:
+            print(f'Received contact form from a bot {body}')
+            return {
+                'statusCode': 200,
+                'headers': cors_headers,
+                'body': json.dumps({
+                    'success': True,
+                    'message': 'OK'
+                })
+            }
 
         if not name or not email or not message:
             return {
@@ -75,7 +104,7 @@ def lambda_handler(event, context):
             }
 
         print(f'Received contact form submission {body}')
-        send_email_to_owner(name, email, message, body)
+        send_email_to_owner(name, email, message, body, sender_email, recipient_email)
 
         return {
             'statusCode': 200,
@@ -85,8 +114,7 @@ def lambda_handler(event, context):
                 'message': 'Your message has been sent successfully!',
             })
         }
-        
-    
+
     except Exception as e:
         print(f'Error: {str(e)}')
         return {
@@ -99,7 +127,7 @@ def lambda_handler(event, context):
         }
 
 
-def send_email_to_owner(name, email, message, data):
+def send_email_to_owner(name, email, message, data, sender_email, recipient_email):
     email_body = f"""
 New contact form submission received!
 
@@ -111,16 +139,14 @@ Message:
 {message}
 
 ---
-Reply directly to: {email}
 Raw data: {data}
 """
-    
+
     try:
         ses_client.send_email(
-            Source=RECEIVER_EMAIL,
-            ReplyToAddresses=[email],
+            Source=sender_email,
             Destination={
-                'ToAddresses': [RECEIVER_EMAIL],
+                'ToAddresses': [recipient_email],
             },
             Message={
                 'Subject': {
@@ -135,7 +161,7 @@ Raw data: {data}
                 }
             }
         )
-        print(f'Email sent successfully to {RECEIVER_EMAIL}')
+        print(f'Email sent successfully to {recipient_email}')
     except Exception as e:
         print(f'Error sending email to owner: {str(e)}')
         raise

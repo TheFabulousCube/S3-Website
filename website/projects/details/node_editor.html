@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/parallax.css" />
+    <link rel="stylesheet" href="/styles/games.css" />
+    <link rel="stylesheet" href="/styles/flip-cards.css" />
+    <script src="/scripts/fader.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+
+    <title>The Fabulous Cube</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <nav>
+        <a class="home-link" href="/">Home</a>
+        <a href="/about">About Me</a>
+        <a href="/faq">FAQ</a>
+        <a href="/projects">Projects</a>
+        <a href="/resume">Resume</a>
+        <a href="/contact">Contact me</a>
+      </nav>
+      <h3>Node.js editor for json object files</h3>
+      <hr />
+    </header>
+    <svg id="fader"></svg>
+    <script>
+      fadeInPage();
+    </script>
+    <div class="friendly-font">
+      <a href="/projects"><- Back to projects</a>
+      <h3>Story about the Node.js editor</h3>
+      Storing the data for the <a href="/about">About Me</a> games in a json file instead of
+      DynamoDB preserves the AWS Edge caching, and reduces cache refreshes.
+      <p>But there are a couple of challenges with json files</p>
+      <ul>
+        <li>editing json object files is a pain</li>
+        <li>getting the syntax correctly by hand is a struggle</li>
+        <li>it's difficult to keep track of which entries I've already made</li>
+      </ul>
+      <p>
+        To help overcome these challenges, I created a simple Node.js page that
+        helps me perform the basic CRUD functions on the json files, with Copilot's help!
+      </br> This has been such a time saver, we created helpers for all the games!
+      </p>
+    </div>
+  </body>
+</html>

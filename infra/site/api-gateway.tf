@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "contact" {
-  name = "${var.project_name}-contact"
+  name =  "tfc-sample-contact-api"
 
   endpoint_configuration {
     types = ["REGIONAL"]

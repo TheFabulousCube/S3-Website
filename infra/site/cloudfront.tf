@@ -1,59 +1,62 @@
 resource "aws_cloudfront_origin_access_control" "site" {
-  name                              = "${var.project_name}-site-oac"
-  description                       = "OAC for ${var.site_bucket_name}"
+  name                              = "thefabulouscube-s3-oac"
+  description                       = "Origin access for static S3 website"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_function" "site_uri_rewrite" {
-  name    = "${var.project_name}-uri-rewrite"
-  runtime = "cloudfront-js-1.0"
-  comment = "Map extensionless paths to index documents."
+  name    = "thefabulouscube-directory-structure-cf-function"
+  runtime = "cloudfront-js-2.0"
+  comment = "Function to rewrite the S3 url.  For instance, request for /faq/ -> /faq/index.html"
   publish = true
   code    = <<-EOT
 function handler(event) {
-  var request = event.request;
-  var uri = request.uri;
-
-  if (uri.endsWith("/")) {
-    request.uri = uri + "index.html";
-  } else if (uri.indexOf(".") === -1) {
-    request.uri = uri + "/index.html";
-  }
-
-  return request;
-}
+   var request = event.request;
+   var uri = request.uri;
+ 
+   // Don't rewrite API paths
+   if (uri.startsWith('/api/')) {
+       return request;
+   }
+ 
+   // If the URI ends with '/', append 'index.html'
+   if (uri.endsWith('/')) {
+       request.uri += 'index.html';
+   }
+   // If the URI has no extension, append '/index.html'
+   else if (!uri.includes('.')) {
+       request.uri += '/index.html';
+   }
+ 
+   return request;
+ }
 EOT
 }
 
 resource "aws_cloudfront_distribution" "site" {
   enabled             = true
-  is_ipv6_enabled     = true
-  comment             = var.site_domain
-  default_root_object = "index.html"
+  is_ipv6_enabled     = false
+  comment             = "Demo of hosting The Fabulous Cube Website in S#"
+  default_root_object = "/index.html"
   aliases             = var.acm_certificate_arn == "" ? [] : local.site_aliases
+  web_acl_id = "arn:aws:wafv2:us-east-1:739275443670:global/webacl/CreatedByCloudFront-d4ae889a/edf6d286-60f9-40b5-a860-485e9eb6e779"
 
   origin {
-    origin_id                = "s3-site"
+    origin_id                = "the-fabulous-cube.s3-website-us-east-1.amazonaws.com-monddswyopx"
     domain_name              = aws_s3_bucket.site.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.site.id
   }
 
   default_cache_behavior {
-    target_origin_id       = "s3-site"
+    target_origin_id       = "the-fabulous-cube.s3-website-us-east-1.amazonaws.com-monddswyopx"
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD"]
     compress               = true
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
+    cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    origin_request_policy_id = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
 
     function_association {
       event_type   = "viewer-request"

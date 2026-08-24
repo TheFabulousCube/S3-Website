@@ -113,3 +113,8 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+.friendly-font {
+  font-family: friendly-answer, "Comic Sans MS", cursive;
+  font-size: clamp(1.1rem, 2.6vw, 1.2rem);
+}

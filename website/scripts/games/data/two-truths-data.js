@@ -49,7 +49,7 @@ export const truths = [
     text: "I've crossed the equator",
     truth: false,
     detail:
-      "I've travelled to London, Rome, Cairo, Greece, and Jerusalem as a child.  All Northern hemisphere",
+      "I've traveled to London, Rome, Cairo, Greece, and Jerusalem as a child.  All Northern hemisphere",
   },
   {
     text: "I've ridden a camel",
@@ -216,42 +216,6 @@ export const truths = [
     detail: "I can type closer to 10 words per minute!",
   },
   {
-    text: "Bananas are berries, but strawberries aren't",
-    truth: true,
-    detail:
-      "Botanically, a berry is a fruit from a single flower's ovary with seeds inside. Bananas fit that definition, but strawberries come from multiple ovaries, so they're not true berries.",
-  },
-  {
-    text: "Cleopatra lived closer to the invention of the iPhone than the building of the pyramids",
-    truth: true,
-    detail:
-      "Cleopatra lived around 30 BC — about 2,000 years before the iPhone but 2,500 years after the Great Pyramid was built (circa 2550 BC).",
-  },
-  {
-    text: "The first computer bug was a real insect",
-    truth: true,
-    detail:
-      "In 1947, engineers found a moth stuck in a relay of the Harvard Mark II computer — they logged it as the first 'bug'.",
-  },
-  {
-    text: "The Titanic had a sister ship called the Britannic",
-    truth: true,
-    detail:
-      "The Britannic and Olympic were part of the same White Star Line trio. Britannic later sank in 1916 after hitting a mine.",
-  },
-  {
-    text: "The Leaning Tower of Pisa was already leaning when it was halfway built",
-    truth: true,
-    detail:
-      "It began leaning in the 12th century due to soft ground and uneven foundation before construction was complete.",
-  },
-  {
-    text: "In Switzerland, it's illegal to own just one guinea pig — they get lonely",
-    truth: true,
-    detail:
-      "Guinea pigs are social animals. Swiss law classifies keeping one alone as animal cruelty, so owners must have at least two.",
-  },
-  {
     text: "I've driven a fire truck",
     truth: true,
     detail:
@@ -329,13 +293,13 @@ export const truths = [
     text: "I've been to a professional football game",
     truth: true,
     detail:
-      "Back when we lived in Tenneessee, we had season tickets to the Titans.",
+      "Back when we lived in Tennessee, we had season tickets to the Titans.",
   },
   {
     text: "I've been to a professional baseball game",
     truth: true,
     detail:
-      "My Dad used to take my younger brother and me to Cincinnatti Reds games.  That was a long time ago.",
+      "My Dad used to take my younger brother and me to Cincinnati Reds games.  That was a long time ago.",
   },
   {
     text: "I've been to a professional basketball game",
@@ -343,7 +307,7 @@ export const truths = [
     detail: "I don't remember one, I've never lived in a city that had one.",
   },
   {
-    text: "I've been to a professional hocky game",
+    text: "I've been to a professional hockey game",
     truth: false,
     detail: "Surprisingly, we never went to see the Nashville Predators play.",
   },
@@ -358,5 +322,64 @@ export const truths = [
     truth: false,
     detail:
       "We've seen several since moving to Florida, but never swam with them.",
+  },
+  {
+    text: "I've written code on a mainframe",
+    truth: true,
+    detail:
+      "My freshman year of college we were still on a mainframe.  I wrote BASIC, Pascal, and FORTRAN.  We had VT-100 terminals too, but you had to go to the Business building for them.",
+  },
+  {
+    text: "I've programmed on a Commodore 64",
+    truth: true,
+    detail:
+      "Yeah, my first 'real' computer.  The cassette drive was slow, so I got the floppy disk drive.  'Load \"*\",8,1' go make a sandwich. It will probably be ready when you get back.",
+  },
+  {
+    text: "I've programmed on an Apple II",
+    truth: false,
+    detail: "I don't think I've EVER programmed on anything Apple",
+  },
+  {
+    text: "I've watched every single episode of Twilight Zone",
+    truth: true,
+    detail:
+      "Probably before that, but I have borrowed the DVD set from the Library to make sure.",
+  },
+  {
+    text: "I've watched all the Twilight movies",
+    truth: false,
+    detail:
+      "I've read all the books (I think), but I haven't watched any of the movies.",
+  },
+  {
+    text: "I've seen every Star Wars movie",
+    truth: false,
+    detail:
+      "I watched the first one at least a dozen times, in the theater.  I've had the first 3 (by release date) on VHS, but I lost interest after that.",
+  },
+  {
+    text: "I've read all the Harry Potter books",
+    truth: true,
+    detail:
+      "I actually went to a midnight release to pick up the last one for my wife (I read it, too!)",
+  },
+  {
+    text: "I've watched all the Alien movies",
+    truth: false,
+    detail:
+      "The first one was intense in the theater.  I didn't think anything could live up to it after that.",
+  },
+  {
+    text: "I've watched every movie in the Marvel Universe",
+    truth: false,
+    detail:
+      "Growing up, Marvel comics were way better than DC comics. You would really think I have, but I've missed a few and just can't seem to get around to watching them.",
+  },
+  {
+    text: "I've watched every episode of FireFly",
+    truth: true,
+    detail:
+      "Space pirate cowboys? Who could resist?  It's only one season but I've watched it a few times.  The movie, too.",
   },
 ];
